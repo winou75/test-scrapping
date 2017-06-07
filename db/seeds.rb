@@ -6,13 +6,53 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Selenium::WebDriver::Chrome.driver_path= "/app/.apt/usr/bin/google-chrome/chromedriver"
+# Selenium::WebDriver::Chrome.driver_path= "/app/.apt/usr/bin/google-chrome/chromedriver"
 
+
+# driver = Selenium::WebDriver.for :chrome, 
+#   :desired_capabilities => Selenium::WebDriver::Remote::Capabilities.chrome({
+#     'chromeOptions' => {
+#     	'binary' => ENV.fetch('GOOGLE_CHROME_SHIM', nil),
+#       'args' => ["--headless"]
+#     }
+#   })
+
+
+
+Selenium::WebDriver::Chrome.driver_path="/chromedriver"
 
 driver = Selenium::WebDriver.for :chrome, 
   :desired_capabilities => Selenium::WebDriver::Remote::Capabilities.chrome({
     'chromeOptions' => {
-    	'binary' => ENV.fetch('GOOGLE_CHROME_SHIM', nil),
-      'args' => ["--headless"]
+    	'binary' => "/app/.apt/usr/bin/google-chrome",
+      'args' => [
+      	"load-extension=/Users/Darwin/Downloads/extension-chrome-", "window-size=1200x600","--headless"
+      ]
     }
   })
+
+b = Watir::Browser.new driver
+b.goto 'https://www.linkedin.com/'
+b.text_field(:class =>'login-email').set 'parisismagic4@hotmail.com'
+b.text_field(:id => 'login-password').set "LoveWinou"
+pry(binding)
+b.button(:class => 'submit-button').click
+# capabilities = Selenium::WebDriver::Remote::Capabilities.phantomjs("phantomjs.page.settings.userAgent" => "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_1) AppleWebKit/602.2.14 (KHTML, like Gecko) Version/10.0.1 Safari/602.2.14", "phantomjs.page.settings.viewportSize" => "width: 1280, height: 3024")
+# driver = Selenium::WebDriver.for :phantomjs, :desired_capabilities => capabilities
+
+# driver.navigate.to 'https://www.linkedin.com/'
+
+# pry(binding)
+# driver.find_element(class: 'login-email').send_keys "parisismagic4@hotmail.com"
+# driver.find_element(id: 'login-password').send_keys "LoveWinou"
+# driver.find_element(class: 'submit-button').submit()
+# sleep(5)
+
+# driver.navigate.to "https://www.linkedin.com/in/annil-chandra-8110606/"
+# driver.find_element(:class => "contact-see-more-less").click()
+
+# # b.scroll.to :bottom 
+# # puts "scrolling"
+# sleep(3)
+# driver.save_screenshot('screenshot.png')
+# b.screenshot.save ("linkedin3.png")

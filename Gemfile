@@ -33,7 +33,9 @@ gem 'spring',        group: :development
 gem 'puma'
 
 gem 'watir'
+gem 'capybara'
 gem 'selenium-webdriver'
+gem 'pry'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
