@@ -62,7 +62,7 @@
 # b.text_field(:id => 'login-password').set "LoveWinou"
 # pry(binding)
 # b.button(:class => 'submit-button').click
-Selenium::WebDriver::PhantomJS.path = "/Users/darwinwu/Downloads/phantomjs-2.1.1-macosx/bin/phantomjs"
+Selenium::WebDriver::PhantomJS.path = "/vendor/phantomjs/bin/phantomjs"
 capabilities = Selenium::WebDriver::Remote::Capabilities.phantomjs("phantomjs.page.settings.userAgent" => "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_1) AppleWebKit/602.2.14 (KHTML, like Gecko) Version/10.0.1 Safari/602.2.14", "phantomjs.page.settings.viewportSize" => "width: 1280, height: 3024")
 driver = Selenium::WebDriver.for :phantomjs, :desired_capabilities => capabilities
 
