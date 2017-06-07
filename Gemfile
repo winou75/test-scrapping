@@ -35,6 +35,7 @@ gem 'puma'
 gem 'watir'
 gem 'capybara'
 gem 'selenium-webdriver'
+gem 'phantomjs'
 gem 'pry'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
